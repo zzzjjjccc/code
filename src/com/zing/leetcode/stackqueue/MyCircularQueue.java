@@ -1,67 +1,79 @@
 package com.zing.leetcode.stackqueue;
 
-import java.util.ArrayList;
-import java.util.List;
 
 class MyCircularQueue {
 
     private int mSize;
-    private List<Integer> mQueue;
+    private int mLength;
+    private int[] mQueue;
     private int mFront;
-    private int mRear;
+    private int mRear = -1;
 
-    /** Initialize your data structure here. Set the size of the queue to be k. */
+    /**
+     * Initialize your data structure here. Set the size of the queue to be k.
+     */
     public MyCircularQueue(int k) {
-        mSize = k;
-        mQueue = new ArrayList<>(mSize);
+        mLength = k;
+        mQueue = new int[mLength];
     }
 
-    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    /**
+     * Insert an element into the circular queue. Return true if the operation is successful.
+     */
     public boolean enQueue(int value) {
-        try {
-            mQueue.add(mRear++ % mSize , value);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (isFull()) {
+            return false;
         }
-        return false;
+        mRear = (mRear + 1) % mLength;
+        mQueue[mRear] = value;
+        mSize++;
+        return true;
     }
 
-    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    /**
+     * Delete an element from the circular queue. Return true if the operation is successful.
+     */
     public boolean deQueue() {
-        try {
-            mQueue.remove(mFront++ % mSize);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (isEmpty()) {
+            return false;
         }
-        return false;
+        mFront = (mFront + 1) % mLength;
+        mSize--;
+        return true;
     }
 
-    /** Get the front item from the queue. */
+    /**
+     * Get the front item from the queue.
+     */
     public int Front() {
-        if (!isEmpty()) {
-            return mQueue.get(mFront % mSize);
+        if (isEmpty()) {
+            return -1;
         }
-        return -1;
+        return mQueue[mFront];
     }
 
-    /** Get the last item from the queue. */
+    /**
+     * Get the last item from the queue.
+     */
     public int Rear() {
-        if (!isEmpty()) {
-            return mQueue.get((mRear - 1) % mSize);
+        if (isEmpty()) {
+            return -1;
         }
-        return -1;
+        return mQueue[mRear];
     }
 
-    /** Checks whether the circular queue is empty or not. */
+    /**
+     * Checks whether the circular queue is empty or not.
+     */
     public boolean isEmpty() {
-        return mFront == mRear;
+        return mSize == 0;
     }
 
-    /** Checks whether the circular queue is full or not. */
+    /**
+     * Checks whether the circular queue is full or not.
+     */
     public boolean isFull() {
-        return (mRear + 1) % mSize == mFront;
+        return mLength == mSize;
     }
 
     public static void main(String[] args) {
