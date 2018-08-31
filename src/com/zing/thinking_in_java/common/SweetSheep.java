@@ -1,4 +1,4 @@
-package com.zing.thinking_in_java;
+package com.zing.thinking_in_java.common;
 
 import java.lang.reflect.Field;
 
@@ -32,7 +32,7 @@ public class SweetSheep {
 //        new Candy();
         System.out.println("After create Candy");
         try {
-            Class.forName("com.zing.thinking_in_java.Gum");
+            Class.forName("com.zing.thinking_in_java.common.Gum");
         } catch (ClassNotFoundException e) {
             System.out.println("Could't find Gum");
         }
@@ -40,7 +40,7 @@ public class SweetSheep {
         new Cookie();
         Class c = null;
         try {
-            c = Class.forName("com.zing.thinking_in_java.Cookie");
+            c = Class.forName("com.zing.thinking_in_java.common.Cookie");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -56,7 +56,7 @@ public class SweetSheep {
         }
 
         try {
-            Class.forName("com.zing.thinking_in_java.Statistics");
+            Class.forName("com.zing.thinking_in_java.common.Statistics");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

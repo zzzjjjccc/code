@@ -1,10 +1,13 @@
-package com.zing.thinking_in_java;
+package com.zing.thinking_in_java.common;
 
 interface IBase {
     void print();
 }
 
 class Base implements IBase{
+    static void p() {
+        System.out.println("p");
+    }
 
     public void print() {
         System.out.println("Base's print");
@@ -19,6 +22,14 @@ class Derive extends Base{
 
     public void external() {
         System.out.println("Derive's external");
+    }
+}
+
+class Derive2 implements IBase {
+
+    @Override
+    public void print() {
+        System.out.println("Derive2's print");
     }
 }
 
@@ -40,6 +51,9 @@ public class InstanceOf {
                 (x.getClass().equals(Derive.class)));
 
         System.out.println("Base's package " + Base.class.getPackage());
+
+        Derive.p();
+
     }
 
     public static void main(String[] args) {

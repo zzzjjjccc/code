@@ -1,4 +1,4 @@
-package com.zing.thinking_in_java;
+package com.zing.thinking_in_java.common;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

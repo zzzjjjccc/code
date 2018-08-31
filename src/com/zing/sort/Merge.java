@@ -7,7 +7,6 @@ import java.util.Arrays;
  */
 public class Merge implements IBaseStrategySort{
 
-    private Comparable[] aux;
     @Override
     public void sort(Comparable[] a) {
         sort(a, 0, a.length-1);
@@ -26,7 +25,7 @@ public class Merge implements IBaseStrategySort{
     private void merge(Comparable[] a, int lo, int mid, int hi) {
         int i = lo;
         int j = mid + 1;
-        aux = Arrays.copyOf(a, a.length);
+        Comparable[] aux = Arrays.copyOf(a, a.length);
         for (int k = lo; k <= hi; ++k) {
             if (i > mid) {
                 a[k] = aux[j++];

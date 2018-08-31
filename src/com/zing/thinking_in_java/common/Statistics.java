@@ -1,4 +1,4 @@
-package com.zing.thinking_in_java;
+package com.zing.thinking_in_java.common;
 
 import java.util.*;
 
@@ -31,5 +31,16 @@ public class Statistics {
         if (ss.contains(s2)) {
             System.out.println("correct");
         }
+
+
+        int a = 10;
+        lebel:
+        while (a-- > 0) {
+            if (a == 5)
+                continue lebel;
+            else
+                System.out.println(a);
+        }
     }
+
 }
